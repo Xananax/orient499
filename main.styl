@@ -1,3 +1,4 @@
+fast = true
 @import "_nib"
 
 @import "_css/variables"
@@ -17,6 +18,9 @@ h1,h2,h3,h4,h5
 html,body
 	padding 0
 	margin 0
+
+body
+	background-color #ddd
 
 .anchor
 	display block
@@ -38,38 +42,41 @@ html,body
 	position absolute
 	position fixed
 	top 0
-	left 0
+	margin 0 auto
 	width inherit
 	height menuHeight
-	background black
+	background white
+	a
+		color #000
+		box-sizing border-box
+		display block
+		text-align center
+		text-decoration none
+		height menuHeight
+		&:hover
+			color white
+			background #555
 	.nav-section
 		height menuHeight
 		display block
 		a
-			box-sizing border-box
-			display block
 			float left
-			height menuHeight
 			min-width  menuHeight
-			text-align center
 			padding 1em
-			background #000
-			text-decoration none
-			color #fdfdfd
-			&:hover
-				background #555
 	.logo
 		float left
-		background red
 		a
 			width 298px
-			background #000 url('/photos/logo.jpg') 0 50% no-repeat
+			background-image url('/photos/logo.jpg')
+			background-position 50% 50%
+			background-repeat no-repeat
 			span
 				@extend .visuallyhidden
 	.links,.social
 		float right
 
 #Wrapper
+	margin 0 auto
 	margin-top menuHeight
 	width cardWidth
 	position relative
@@ -103,10 +110,20 @@ body
 	width cardWidth
 .text-cell
 	padding 3em
-.card-text > h1
-	top -.5em
+.slider-header  h1
+	top 0em
 	left 1.5em
+.anchor
+	top - (menuHeight * 2)
+#Wrapper
+	margin-top (menuHeight * 2)
 .nav
+	height (menuHeight * 2)
+	.logo, .logo a
+		width 100%
+	.links
+		top menuHeight
+		width 100%
 	.social
 		display none
 .slider-control

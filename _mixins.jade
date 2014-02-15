@@ -1,26 +1,44 @@
-mixin card(card,uniqueId)
+mixin card(card,uid)
 	- var size = 'card-'+(card.columns? card.columns : 1);
-	if card.type == "text"
-		+text(uniqueId,card.content,size,card.title,card.slug)
-	if card.type == "slider"
-		+slider(uniqueId,card.images,size,card.title,card.slug);
+	- var length = card.content && card.content || 0;
+	- if(card.header === true){card.header = card.title || card.name || card.slug;}
+	- if(card.clap === true){card.clap = card.title || card.name || card.slug;}
+	.card.slider(class=size,id='card-'+uid)
+		+anchor(uid)
+		.slides(style="left:0px")
+			each item,num in card.content
+				- var className = 'item-'+(num == 0 ? 'first' : (num == length -1 ? 'last' : 'middle' ))+' item-'+num+' item-'+( num % 2 ? 'odd':'even');
+				.slide(id=uid+'-'+num,class=className)
+					if(item.filename)
+						+image(item)
+					if(item.text)
+						+text(item)
+		if length
+			+dots(uid,card.content)
+			+slider-controls()
+		if card.clap
+			+slider-title(card)
+		if card.header
+			+slider-header(card)
+
+
+mixin text(item)
+	.text-cell
+		p!=item.text
+
+mixin image(item)
+	- var focus = item.focus || '';
+	- focus = focus.split(',');
+	- focus[0] = focus[0] || 'center';
+	- focus[1] = focus[1] || 'center';
+	.image-loading
+		i.image-loading-inner.fa.fa-spinner.fa-spin
+	.image-inner(style='background-image:url('+prefix+item.filename+'.jpg'+')',class="image-focus-"+focus[0]+"-"+focus[1])
+	if item.caption
+		.image-caption=item.caption
 
 mixin anchor(slug)
 	a.anchor(name=slug,id=slug)
-
-mixin text(uid,texts,size,title,slug)
-	.card.slider.card-text(class=size,id='card-'+uid)
-		+anchor(slug)
-		if texts
-			.slides(style="left:0px;")	
-				each txt,i in texts
-					.text.slide
-						.text-cell
-							p(id=uid+'-'+i)!=txt
-			+dots(uid,texts)
-			+slider-controls()
-			if title
-				h1=title
 
 mixin dots(uid,els)
 	.dots
@@ -38,10 +56,14 @@ mixin slider(uid,images,size,title,slug)
 		if title
 			+slider-title(title)
 
-mixin slider-title(title)
+mixin slider-title(item)
 	.slider-title
 		.slider-title-inner
-			h1=title
+			h1=item.title
+
+mixin slider-header(item)
+	.slider-header
+		h1=item.title
 
 mixin slider-controls()
 	.slider-controls
@@ -49,26 +71,3 @@ mixin slider-controls()
 			i.fa.fa-angle-left
 		a.slider-control.slider-control-right(href="#",data-dir="right")
 			i.fa.fa-angle-right
-
--//unused
-mixin loader
-	.progress-container
-		.progress
-			.progress-inner
-
-mixin images-gallery(uid,images)
-	each image,n in images
-		- var focus = image.focus || '';
-		- focus = focus.split(',');
-		- focus[0] = focus[0] || 'center';
-		- focus[1] = focus[1] || 'center';
-		+image(prefix+image.filename+'.jpg',image.caption,focus)(id=uid+'-'+n)
-
-mixin image(filename,caption,focus)
-	- if(!focus){focus = 'center';}
-	.image.slide(attributes)
-		.image-loading
-			i.image-loading-inner.fa.fa-spinner.fa-spin
-		.image-inner(style='background-image:url('+filename+')',class="image-focus-"+focus[0]+"-"+focus[1])
-		if caption
-			.image-caption=caption

@@ -18,22 +18,30 @@
 			,	"type":"text"
 			,	"pin":true
 			,	"columns":2
+			,	"header":"about"
 			,	"content":[
-					"Frank Luca and Aida Kawas, two lovers of Middle-Eastern arts, teamed up to create Orient 499, a trendy boutique which would accommodate at the same time their taste for tradition and their sense of modernity, all the while statisfying their crave for something new."
-				,	"Orient 499 is a boutique but also an atelier, featuring exclusive, original handicrafts and designer's creations. Our items vary from antiques to modern furniture, clothes and accessories mainly made in Lebanon, but also from Syria, Turkey, Morocco...Transcending time, Orient 499 remains the anchor of oriental tradition."
+					{
+						"text":"Frank Luca and Aida Kawas, two lovers of Middle-Eastern arts, teamed up to create Orient 499, a trendy boutique which would accommodate at the same time their taste for tradition and their sense of modernity, all the while statisfying their crave for something new."
+					}
+				,	{
+						"text":"Orient 499 is a boutique but also an atelier, featuring exclusive, original handicrafts and designer's creations. Our items vary from antiques to modern furniture, clothes and accessories mainly made in Lebanon, but also from Syria, Turkey, Morocco...Transcending time, Orient 499 remains the anchor of oriental tradition."
+					}
 					]
 			}
 		,	{
 				"title":"Clothes"
 			,	"slug":"clothes"
 			,	"type":"slider"
+			,	"clap":true
+			,	"pin":true
 			,	"columns":1
-			,	"images":[
+			,	"content":[
 					{
 						"name":"Some Name"
 					,	"filename":"010"
 					,	"caption":"some testing caption"
 					,	"focus":"top"
+					,	"text":"lorem ipsum dolores amet"
 					}
 				,	{
 						"name":"Some Name"
