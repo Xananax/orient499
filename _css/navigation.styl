@@ -4,7 +4,7 @@
 	top 0
 	margin 0 auto
 	width inherit
-	height menuHeight
+	height (menuHeight * 2)
 	background menuBG
 	overflow hidden
 	a
@@ -24,13 +24,22 @@
 			background-color menuLinkHoverBG
 	.logo
 		float left
+		width 100%
+		height menuHeight
 		a
-			width 298px
+			display block
+			width inherit
+			height inherit
 			background-image url('/photos/logo.jpg')
 			span
 				@extend .visuallyhidden
 	.links,.social
 		float right
+	.links
+		top menuHeight
+		width 100%
+	.social
+		display none
 
 .nav-section
 	height menuHeight

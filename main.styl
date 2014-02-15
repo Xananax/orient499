@@ -1,5 +1,4 @@
 @import "_nib"
-
 @import "_css/variables"
 
 body
@@ -19,83 +18,38 @@ html,body
 
 body
 	background-color bodyBG
+	font-size 1.5em
 
 .anchor
 	display block
 	position absolute
-	top - menuHeight
 	left 0
-
-.visuallyhidden
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
+	top - (menuHeight * 2)
 
 #Wrapper
 	margin 0 auto
-	margin-top menuHeight
 	width cardWidth
 	position relative
+	margin-top (menuHeight * 2)
+	clearfix()
 
-.card
-	position relative
-	height cardHeight
-	overflow hidden
-	if cardRadius
-		border-radius cardRadius
-	background-color #ccc
-	box-sizing border-box
-	margin cardMargin
+#Footer
+	display block
 	float left
-.card-1
 	width cardWidth
-.card-2
-	width (cardWidth * 2)
-.card-3
-	width (cardWidth * 3)
+	margin 0 auto
+	background red
+	height footerHeight
 
+@import "_css/utils"
 @import "_css/fontawesome"
 @import "_css/images"
 @import "_css/slider"
 @import "_css/text"
 @import "_css/dots"
 @import "_css/navigation"
-
-body
-	font-size 1.5em
-.card, .card-1, .card-2,.card-3
-	width cardWidth
-.text-cell
-	padding 3em
-.slider-header  h1
-	top 0em
-	left 1.5em
-.anchor
-	top - (menuHeight * 2)
-#Wrapper
-	margin-top (menuHeight * 2)
-.nav
-	height (menuHeight * 2)
-	.logo, .logo a
-		width 100%
-	.links
-		top menuHeight
-		width 100%
-	.social
-		display none
-.slider-control
-	opacity 1
-	&:focus,&:active,&:hover
-		background transparent
-.dots
-	font-size .7em
-#Footer
-	display none
+@import "_css/card"
+@import "_css/responsive"
 
 /**
 

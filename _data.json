@@ -15,7 +15,7 @@
 				"title":"About"
 			,	"slug":"about"
 			,	"pin":true
-			,	"columns":2
+			,	"columns":4
 			,	"header":"about"
 			,	"content":[
 					{

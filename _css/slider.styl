@@ -44,7 +44,8 @@
 			text-align center
 
 .slider-control
-	opacity 0
+	display none
+	opacity 1
 	box-sizing border-box
 	height sliderControlHeight
 	width sliderControlHeight
@@ -66,8 +67,7 @@
 		i
 			@extend .fa-{sliderArrowsClass}-right
 	&:focus,&:active,&:hover
-		outline none
-		background sliderControlFocusBG
+		background transparent
 
 .slides
 	position relative
@@ -78,8 +78,6 @@
 .slider
 	text-align center
 	&:hover
-		.slider-control
-			opacity 1
 		.slider-title
 			top 100%
 			transition top animationSpeedFast ease-in-out
