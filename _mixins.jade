@@ -15,7 +15,7 @@ mixin card(card,uid)
 						+image(item,card)
 					if(item.text)
 						+text(item,card)
-		if length
+		if length > 1
 			+dots(uid,card.content,length)
 			+slider-controls()
 		if card.clap
@@ -24,9 +24,13 @@ mixin card(card,uid)
 			+slider-header(card)
 
 
-mixin text(item)
+mixin text(item,card)
+	- if(Object.prototype.toString.call(item.text) === '[object Array]'){
+	-	item.text = item.text.join('<br>');
+	- }
 	.text-cell
-		p!=item.text
+		.text-contents
+			p!=item.text
 
 mixin image(item,card)
 	- var focus = item.focus || '';
