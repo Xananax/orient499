@@ -1,20 +1,22 @@
+- var looper = function(num,length,append){return 'item-'+(num == 0 ? 'first' : (num == length -1 ? 'last' : 'middle' ))+' item-'+num+' item-'+( num % 2 ? 'odd':'even')+(append?' '+append:'');}
+
 mixin card(card,uid)
 	- var size = 'card-'+(card.columns? card.columns : 1);
-	- var length = card.content && card.content || 0;
+	- var length = card.content && card.content.length || 0;
 	- if(card.header === true){card.header = card.title || card.name || card.slug;}
 	- if(card.clap === true){card.clap = card.title || card.name || card.slug;}
 	.card.slider(class=size,id='card-'+uid)
 		+anchor(uid)
 		.slides(style="left:0px")
 			each item,num in card.content
-				- var className = 'item-'+(num == 0 ? 'first' : (num == length -1 ? 'last' : 'middle' ))+' item-'+num+' item-'+( num % 2 ? 'odd':'even');
+				- var className = looper(num,length);
 				.slide(id=uid+'-'+num,class=className)
 					if(item.filename)
 						+image(item)
 					if(item.text)
 						+text(item)
 		if length
-			+dots(uid,card.content)
+			+dots(uid,card.content,length)
 			+slider-controls()
 		if card.clap
 			+slider-title(card)
@@ -40,11 +42,11 @@ mixin image(item)
 mixin anchor(slug)
 	a.anchor(name=slug,id=slug)
 
-mixin dots(uid,els)
+mixin dots(uid,els,length)
 	.dots
-		each el,i in els
-			- var active = (i == 0)? ' active' : ''
-			a.dot(href="#"+uid+'-'+i,class="dot-"+i+active,data-num=i)
+		each item,num in els
+			- var active = (num == 0)? ' active' : ''
+			a.dot(href="#"+uid+'-'+num,class=looper(num,length,"dot-"+num+active),data-num=num)
 
 mixin slider(uid,images,size,title,slug)
 	.card.slider(class=size,id='card-'+uid)
