@@ -1,7 +1,7 @@
 - var looper = function(num,length,append){return 'item-'+(num == 0 ? 'first' : (num == length -1 ? 'last' : 'middle' ))+' item-'+num+' item-'+( num % 2 ? 'odd':'even')+(append?' '+append:'');}
-- var hyperlinks = function(){
--		var regExp = /(b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-- }
+- var hyperlinks = function(text){return text.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig,"<a href='$1'>$1</a>"); }
+- var emails = function(text){return text.replace(/(\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)/,"<a href=\"mailto:$1\">$1</a>");}
+- var processText = function(text){return emails(hyperlinks(text));}
 
 mixin card(card,uid)
 	- var size = 'card-'+(card.columns? card.columns : 1);
@@ -33,7 +33,7 @@ mixin text(item,card)
 	- }
 	.text-cell
 		.text-contents
-			p!=item.text
+			p!=processText(item.text)
 
 mixin image(item,card)
 	- var focus = item.focus || '';
