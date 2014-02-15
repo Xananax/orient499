@@ -12,9 +12,9 @@ mixin card(card,uid)
 				- var className = looper(num,length);
 				.slide(id=uid+'-'+num,class=className)
 					if(item.filename)
-						+image(item)
+						+image(item,card)
 					if(item.text)
-						+text(item)
+						+text(item,card)
 		if length
 			+dots(uid,card.content,length)
 			+slider-controls()
@@ -28,14 +28,16 @@ mixin text(item)
 	.text-cell
 		p!=item.text
 
-mixin image(item)
+mixin image(item,card)
 	- var focus = item.focus || '';
 	- focus = focus.split(',');
 	- focus[0] = focus[0] || 'center';
 	- focus[1] = focus[1] || 'center';
+	- prefix = card.basepathprefix ? card.basepathprefix : '';
+	- suffix = card.basepathsuffix ? card.basepathsuffix : '';
 	.image-loading
 		i.image-loading-inner
-	.image-inner(style='background-image:url('+prefix+item.filename+'.jpg'+')',class="image-focus-"+focus[0]+"-"+focus[1])
+	.image-inner(style='background-image:url('+prefix+item.filename+suffix+')',class="image-focus-"+focus[0]+"-"+focus[1])
 	if item.caption
 		.image-caption=item.caption
 

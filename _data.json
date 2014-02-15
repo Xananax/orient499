@@ -10,12 +10,10 @@
 		,	{"name":"instagram","address":"orient499"}
 		]
 	,	"copyright":"Orient 499 &copy;"
-	,	"prefix":"photos/clothes/clothes-"
 	,	"cards":[
 			{
 				"title":"About"
 			,	"slug":"about"
-			,	"type":"text"
 			,	"pin":true
 			,	"columns":2
 			,	"header":"about"
@@ -31,17 +29,45 @@
 		,	{
 				"title":"Clothes"
 			,	"slug":"clothes"
-			,	"type":"slider"
 			,	"clap":true
 			,	"pin":true
 			,	"columns":1
+			,	"basepathprefix":"photos/clothes/clothes-"
+			,	"basepathsuffix":".jpg"
 			,	"content":[
 					{
 						"name":"Some Name"
 					,	"filename":"010"
 					,	"caption":"some testing caption"
 					,	"focus":"top"
-					,	"text":"lorem ipsum dolores amet"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"020"
+					,	"focus":"top"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"030"
+					,	"caption":"some testing caption"
+					,	"focus":"top"
+					}
+				]
+			}
+		,	{
+				"title":"Objects"
+			,	"slug":"objects"
+			,	"clap":true
+			,	"pin":true
+			,	"columns":1
+			,	"basepathprefix":"photos/objects/objects-"
+			,	"basepathsuffix":".jpg"
+			,	"content":[
+					{
+						"name":"Some Name"
+					,	"filename":"010"
+					,	"caption":"some testing caption"
+					,	"focus":"top"
 					}
 				,	{
 						"name":"Some Name"
