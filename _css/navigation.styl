@@ -6,6 +6,7 @@
 	width inherit
 	height menuHeight
 	background menuBG
+	overflow hidden
 	a
 		color menuLinkFG
 		background-color menuLinkBG
@@ -13,21 +14,14 @@
 		display block
 		text-align center
 		text-decoration none
-		height menuHeight
 		background-position 50% 50%
 		background-repeat no-repeat
+		height 100%
 		&:visited
 			color menuLinkFG
 		&:hover
 			color menuLinkHoverFG
 			background-color menuLinkHoverBG
-	.nav-section
-		height menuHeight
-		display block
-		a
-			float left
-			min-width menuHeight
-			padding 1em
 	.logo
 		float left
 		a
@@ -37,3 +31,17 @@
 				@extend .visuallyhidden
 	.links,.social
 		float right
+
+.nav-section
+	height menuHeight
+	display table
+	width 100%
+	height menuHeight
+.nav-inner
+	display table-row
+	width 100%
+	a
+		min-width menuHeight
+		display table-cell
+		vertical-align middle
+		line-height menuHeight
