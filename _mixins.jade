@@ -1,4 +1,7 @@
 - var looper = function(num,length,append){return 'item-'+(num == 0 ? 'first' : (num == length -1 ? 'last' : 'middle' ))+' item-'+num+' item-'+( num % 2 ? 'odd':'even')+(append?' '+append:'');}
+- var hyperlinks = function(){
+-		var regExp = /(b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+- }
 
 mixin card(card,uid)
 	- var size = 'card-'+(card.columns? card.columns : 1);
@@ -79,3 +82,6 @@ mixin slider-controls()
 			i
 		a.slider-control.slider-control-right(href="#",data-dir="right")
 			i
+
+mixin social-link(provider)
+	a.fa.social-link(href='http://www.'+provider.name+'.com/'+provider.address,class='fa-'+provider.name,target="_blank")

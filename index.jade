@@ -11,7 +11,7 @@ each card,i in cards
 	.nav-section.social
 		.nav-inner
 			each icon in social
-				a.fa(href='http://www.'+icon.name+'.com/'+icon.address,class='fa-'+icon.name)
+				+social-link(icon)
 	.nav-section.links
 		.nav-inner
 			each card,i in cards
