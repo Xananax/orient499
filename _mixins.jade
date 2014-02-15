@@ -34,7 +34,7 @@ mixin image(item)
 	- focus[0] = focus[0] || 'center';
 	- focus[1] = focus[1] || 'center';
 	.image-loading
-		i.image-loading-inner.fa.fa-spinner.fa-spin
+		i.image-loading-inner
 	.image-inner(style='background-image:url('+prefix+item.filename+'.jpg'+')',class="image-focus-"+focus[0]+"-"+focus[1])
 	if item.caption
 		.image-caption=item.caption
@@ -70,6 +70,6 @@ mixin slider-header(item)
 mixin slider-controls()
 	.slider-controls
 		a.slider-control.slider-control-left(href="#",data-dir="left")
-			i.fa.fa-angle-left
+			i
 		a.slider-control.slider-control-right(href="#",data-dir="right")
-			i.fa.fa-angle-right
+			i

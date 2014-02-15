@@ -1,0 +1,39 @@
+.nav
+	position absolute
+	position fixed
+	top 0
+	margin 0 auto
+	width inherit
+	height menuHeight
+	background menuBG
+	a
+		color menuLinkColor
+		background-color menuLinkBG
+		box-sizing border-box
+		display block
+		text-align center
+		text-decoration none
+		height menuHeight
+		background-position 50% 50%
+		background-repeat no-repeat
+		&:visited
+			color menuLinkFG
+		&:hover
+			color menuLinkHoverFG
+			background-color menuLinkHoverBG
+	.nav-section
+		height menuHeight
+		display block
+		a
+			float left
+			min-width menuHeight
+			padding 1em
+	.logo
+		float left
+		a
+			width 298px
+			background-image url('/photos/logo.jpg')
+			span
+				@extend .visuallyhidden
+	.links,.social
+		float right

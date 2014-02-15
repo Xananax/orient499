@@ -12,15 +12,14 @@ body
 h1,h2,h3,h4,h5
 	font-weight 300
 	font-family titlesTextFont
-	text-transform uppercase
-	//text-transform lowercase
+	text-transform titlesTextTransform
 
 html,body
 	padding 0
 	margin 0
 
 body
-	background-color #ddd
+	background-color bodyBG
 
 .anchor
 	display block
@@ -37,43 +36,6 @@ body
 	padding: 0;
 	position: absolute;
 	width: 1px;
-
-.nav
-	position absolute
-	position fixed
-	top 0
-	margin 0 auto
-	width inherit
-	height menuHeight
-	background white
-	a
-		color #000
-		box-sizing border-box
-		display block
-		text-align center
-		text-decoration none
-		height menuHeight
-		&:hover
-			color white
-			background #555
-	.nav-section
-		height menuHeight
-		display block
-		a
-			float left
-			min-width  menuHeight
-			padding 1em
-	.logo
-		float left
-		a
-			width 298px
-			background-image url('/photos/logo.jpg')
-			background-position 50% 50%
-			background-repeat no-repeat
-			span
-				@extend .visuallyhidden
-	.links,.social
-		float right
 
 #Wrapper
 	margin 0 auto
@@ -98,11 +60,12 @@ body
 .card-3
 	width (cardWidth * 3)
 
-//@import "_css/spinner"
+@import "_css/fontawesome"
 @import "_css/images"
 @import "_css/slider"
 @import "_css/text"
 @import "_css/dots"
+@import "_css/navigation"
 
 body
 	font-size 1.5em
