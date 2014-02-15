@@ -16,6 +16,8 @@ mixin card(card,uid)
 			each item,num in card.content
 				- var className = looper(num,length);
 				.slide(id=uid+'-'+num,class=className)
+					if(item.map)
+						+map(item,card)
 					if(item.filename)
 						+image(item,card)
 					if(item.text)
@@ -28,6 +30,10 @@ mixin card(card,uid)
 		if card.header
 			+slider-header(card)
 
+
+mixin map(item,card)
+	.google-maps
+		iframe(src=item.map,width="600",height="450",frameborder="0",style="border:0",scrolling="no",marginheight="0",marginwidth="0")
 
 mixin text(item,card)
 	- if(Object.prototype.toString.call(item.text) === '[object Array]'){

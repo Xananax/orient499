@@ -84,9 +84,36 @@
 				]
 			}
 		,	{
+				"title":"Press"
+			,	"slug":"press"
+			,	"clap":true
+			,	"pin":false
+			,	"columns":1
+			,	"theme":"a clap-opaque"
+			,	"basepathprefix":"photos/press/press-"
+			,	"basepathsuffix":".jpg"
+			,	"content":[
+					{
+						"name":"Some Name"
+					,	"filename":"1"
+					,	"focus":"bottom,right"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"2"
+					,	"focus":"bottom,right"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"3"
+					,	"focus":"bottom,right"
+					}
+				]
+			}
+		,	{
 				"title":"Contact Us"
 			,	"slug":"contact"
-			,	"pin":"true"
+			,	"pin":true
 			,	"content":[
 					{
 						"text":[
@@ -100,6 +127,16 @@
 						,	"Fax: 961 1 369 499"
 						,	"Email: orient499@orient499.com"
 						]
+					}
+				]
+			}
+		,	{
+				"title":"Map"
+			,	"slug":"map"
+			,	"pin":false
+			,	"content":[
+					{
+						"map":"https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=omar+daouk+street,+beirut+lebanon&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=65.135703,119.267578&amp;ie=UTF8&amp;hq=omar+daouk+street,&amp;hnear=Beirut,+Lebanon&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"
 					}
 				]
 			}
