@@ -82,6 +82,16 @@
 					}
 				]
 			}
+			{
+				"title":"Contact Us"
+			,	"slug":"contact"
+			,	"pin":"true"
+			,	"content":[
+					{
+						"499, Omar Daouk Str,<br>Hammoud bldg<br>Mina El Hosn<br>Beirut, Lebanon<br><br>Cell: 961 3 411 624<br>Phone: 961 1 369 499<br>Fax: 961 1 369 499<br><br>Email: orient499@orient499.com"
+					}
+				]
+			}
 		]
 	}
 }
