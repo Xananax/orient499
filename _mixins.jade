@@ -8,7 +8,9 @@ mixin card(card,uid)
 	- var length = card.content && card.content.length || 0;
 	- if(card.header === true){card.header = card.title || card.name || card.slug;}
 	- if(card.clap === true){card.clap = card.title || card.name || card.slug;}
-	.card.slider(class=size,id='card-'+uid)
+	- var theme = ' theme-' + (card.theme?card.theme:'a');
+	- var classes = size+theme
+	.card.slider(class=classes,id='card-'+uid)
 		+anchor(uid)
 		.slides(style="left:0px")
 			each item,num in card.content

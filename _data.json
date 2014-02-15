@@ -34,6 +34,7 @@
 			,	"columns":1
 			,	"basepathprefix":"photos/clothes/clothes-"
 			,	"basepathsuffix":".jpg"
+			,	"theme":"a"
 			,	"content":[
 					{
 						"name":"Some Name"

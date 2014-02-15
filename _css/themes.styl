@@ -1,0 +1,34 @@
+//////////////// THEME A /////////////////////
+.theme-a
+	//texts
+	.text-cell
+		color white
+		background black
+		h1,h2,h3,h4,h5
+			color white
+		h1
+			font-size 2em
+		h2
+			font-size 1.8em
+		h3
+			font-size 1.5em
+		a
+			color white
+			text-decoration underline
+			&:link, &:visited
+				color white
+			&:hover,&:active
+				color red
+	//header on top of a card
+	.slider-header
+		top 0em
+		left 3em
+		h1
+			font-size 1.8em
+	//clap in front of a card
+	.slider-title h1
+		font-size 1.8em
+
+//////////////// THEME B /////////////////////
+.theme-b
+	@extend .theme-a
