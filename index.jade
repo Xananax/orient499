@@ -9,10 +9,12 @@ each card,i in cards
 		a(href=url)
 			span=title
 	.nav-section.social
-		each icon in social
-			a.fa(href='http://www.'+icon.name+'.com/'+icon.address,class='fa-'+icon.name)
+		.nav-inner
+			each icon in social
+				a.fa(href='http://www.'+icon.name+'.com/'+icon.address,class='fa-'+icon.name)
 	.nav-section.links
-		each card,i in cards
-			- var uid = card.slug ? card.slug : 'card-'+i;
-			if card.pin
-				a(href="#"+uid)=card.title
+		.nav-inner
+			each card,i in cards
+				- var uid = card.slug ? card.slug : 'card-'+i;
+				if card.pin
+					a(href="#"+uid)=card.title
