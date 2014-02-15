@@ -14,11 +14,9 @@ h1,h2,h3,h4,h5
 	text-transform uppercase
 	//text-transform lowercase
 
-html,body, #wrapper
+html,body
 	padding 0
 	margin 0
-	width 100%
-	height 100%
 
 .anchor
 	display block
@@ -26,12 +24,22 @@ html,body, #wrapper
 	top - menuHeight
 	left 0
 
+.visuallyhidden
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+
 .nav
 	position absolute
 	position fixed
 	top 0
 	left 0
-	width 100%
+	width inherit
 	height menuHeight
 	background black
 	.nav-section
@@ -57,12 +65,14 @@ html,body, #wrapper
 			width 298px
 			background #000 url('/photos/logo.jpg') 0 50% no-repeat
 			span
-				display none
+				@extend .visuallyhidden
 	.links,.social
 		float right
 
-#wrapper
+#Wrapper
 	margin-top menuHeight
+	width cardWidth
+	position relative
 
 .card
 	position relative
@@ -87,23 +97,26 @@ html,body, #wrapper
 @import "_css/text"
 @import "_css/dots"
 
-@media only screen and (max-width : 1024px)
-	body
-		font-size 1.5em
-	.card, .card-1, .card-2,.card-3
-		width cardWidth
-	.text-cell
-		padding 4em
-	.card-text > h1
-		top 0
-		left 2em
-	.nav
-		.social
-			display none
-	.slider-control
-		opacity 1
-		&:focus,&:active,&:hover
-			background transparent
+body
+	font-size 1.5em
+.card, .card-1, .card-2,.card-3
+	width cardWidth
+.text-cell
+	padding 3em
+.card-text > h1
+	top -.5em
+	left 1.5em
+.nav
+	.social
+		display none
+.slider-control
+	opacity 1
+	&:focus,&:active,&:hover
+		background transparent
+.dots
+	font-size .7em
+#Footer
+	display none
 
 /**
 

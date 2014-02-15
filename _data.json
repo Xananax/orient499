@@ -2,6 +2,9 @@
 	"index":{
 		"title":"Orient 499"
 	,	"url":"http://localhost:9000"
+	,	"meta":{
+			"keywords":"orient artisanat clothes"
+		}
 	,	"social":[
 			{"name":"facebook","address":"orient499"}
 		,	{"name":"instagram","address":"orient499"}

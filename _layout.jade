@@ -1,13 +1,17 @@
 doctype
 html
 	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible",content="IE=edge")
+		meta(name="viewport",content="width=device-width, initial-scale=1")
+		meta(name="description",content=title+' '+meta.keywords)
 		link(rel="stylesheet", href="/main.css")
 		link(rel="stylesheet", href="/font-awesome.css")
 		script(src="jquery.js")
 		script(src="script.js")
 		title=title
 	body
-		#wrapper
+		#Wrapper
 			!= yield
-		#footer
+		#Footer
 			p!=copyright
