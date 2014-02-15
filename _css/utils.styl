@@ -7,3 +7,37 @@
 	padding: 0;
 	position: absolute;
 	width: 1px;
+
+
+.tooltip-trigger
+	.tooltip
+		display block
+		opacity 0
+		z-index 9
+		box-size border-box
+		position absolute
+		left - (toolTipWidth/2)
+		top - toolTipHeight - (toolTipPointerSize * 3)
+		width toolTipWidth
+		height toolTipHeight
+		padding toolTipPadding
+		background-color toolTipColor
+		box-shadow 4px 0 10px rgba(0,0,0,.3)
+		border-radius toolTipBorderRadius
+		transition opacity 1s
+		&:after 
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-width: toolTipPointerSize;
+			border-style: solid;
+			border-color: toolTipColor transparent transparent transparent;
+			bottom - (toolTipPointerSize*2)
+			left ((toolTipWidth / 2) - (toolTipPointerSize / 4))
+		p
+			padding 0
+		p+p
+			padding-top: 15px
+	&:hover .tooltip
+		opacity 1

@@ -13,4 +13,9 @@ html
 		#Wrapper
 			!= yield
 			#Footer
-				p!=copyright
+				.copyright!=copyright
+				.mutnt.tooltip-trigger
+					a.mutnt-logo-square(href="http://mutnt.net",target="_blank")
+					.mutnt-tdext.tooltip
+						.mutnt-logo
+						.mutnt-text website developped by mutnt
