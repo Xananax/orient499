@@ -1,0 +1,74 @@
+mixin card(card,uniqueId)
+	- var size = 'card-'+(card.columns? card.columns : 1);
+	if card.type == "text"
+		+text(uniqueId,card.content,size,card.title,card.slug)
+	if card.type == "slider"
+		+slider(uniqueId,card.images,size,card.title,card.slug);
+
+mixin anchor(slug)
+	a.anchor(name=slug,id=slug)
+
+mixin text(uid,texts,size,title,slug)
+	.card.slider.card-text(class=size,id='card-'+uid)
+		+anchor(slug)
+		if texts
+			.slides(style="left:0px;")	
+				each txt,i in texts
+					.text.slide
+						.text-cell
+							p(id=uid+'-'+i)!=txt
+			+dots(uid,texts)
+			+slider-controls()
+			if title
+				h1=title
+
+mixin dots(uid,els)
+	.dots
+		each el,i in els
+			- var active = (i == 0)? ' active' : ''
+			a.dot(href="#"+uid+'-'+i,class="dot-"+i+active,data-num=i)
+
+mixin slider(uid,images,size,title,slug)
+	.card.slider(class=size,id='card-'+uid)
+		+anchor(slug)
+		.slides(style="left:0px;")
+			+images-gallery(uid,images)
+		+dots(uid,images)
+		+slider-controls()
+		if title
+			+slider-title(title)
+
+mixin slider-title(title)
+	.slider-title
+		.slider-title-inner
+			h1=title
+
+mixin slider-controls()
+	.slider-controls
+		a.slider-control.slider-control-left(href="#",data-dir="left")
+			i.fa.fa-angle-left
+		a.slider-control.slider-control-right(href="#",data-dir="right")
+			i.fa.fa-angle-right
+
+//unused
+mixin loader
+	.progress-container
+		.progress
+			.progress-inner
+
+mixin images-gallery(uid,images)
+	each image,n in images
+		- var focus = image.focus || '';
+		- focus = focus.split(',');
+		- focus[0] = focus[0] || 'center';
+		- focus[1] = focus[1] || 'center';
+		+image(prefix+image.filename+'.jpg',image.caption,focus)(id=uid+'-'+n)
+
+mixin image(filename,caption,focus)
+	- if(!focus){focus = 'center';}
+	.image.slide(attributes)
+		.image-loading
+			i.image-loading-inner.fa.fa-spinner.fa-spin
+		.image-inner(style='background-image:url('+filename+')',class="image-focus-"+focus[0]+"-"+focus[1])
+		if caption
+			.image-caption=caption

@@ -1,0 +1,13 @@
+doctype
+html
+	head
+		link(rel="stylesheet", href="/main.css")
+		link(rel="stylesheet", href="/font-awesome.css")
+		script(src="jquery.js")
+		script(src="script.js")
+		title=title
+	body
+		#wrapper
+			!= yield
+		#footer
+			p!=copyright

@@ -1,0 +1,136 @@
+@import "_nib"
+
+@import "_css/variables"
+
+body
+	font-size 100%
+	font-size baseFontSize
+	font-size 1em
+	font-family bodyTextFont
+
+h1,h2,h3,h4,h5
+	font-weight 300
+	font-family titlesTextFont
+	text-transform uppercase
+	//text-transform lowercase
+
+html,body, #wrapper
+	padding 0
+	margin 0
+	width 100%
+	height 100%
+
+.anchor
+	display block
+	position absolute
+	top - menuHeight
+	left 0
+
+.nav
+	position absolute
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height menuHeight
+	background black
+	.nav-section
+		height menuHeight
+		display block
+		a
+			box-sizing border-box
+			display block
+			float left
+			height menuHeight
+			min-width  menuHeight
+			text-align center
+			padding 1em
+			background #000
+			text-decoration none
+			color #fdfdfd
+			&:hover
+				background #555
+	.logo
+		float left
+		background red
+		a
+			width 298px
+			background #000 url('/photos/logo.jpg') 0 50% no-repeat
+			span
+				display none
+	.links,.social
+		float right
+
+#wrapper
+	margin-top menuHeight
+
+.card
+	position relative
+	height cardHeight
+	overflow hidden
+	if cardRadius
+		border-radius cardRadius
+	background-color #ccc
+	box-sizing border-box
+	margin cardMargin
+	float left
+.card-1
+	width cardWidth
+.card-2
+	width (cardWidth * 2)
+.card-3
+	width (cardWidth * 3)
+
+//@import "_css/spinner"
+@import "_css/images"
+@import "_css/slider"
+@import "_css/text"
+@import "_css/dots"
+
+@media only screen and (max-width : 1024px)
+	body
+		font-size 1.5em
+	.card, .card-1, .card-2,.card-3
+		width cardWidth
+	.text-cell
+		padding 4em
+	.card-text > h1
+		top 0
+		left 2em
+	.nav
+		.social
+			display none
+	.slider-control
+		opacity 1
+		&:focus,&:active,&:hover
+			background transparent
+
+/**
+
+// Smartphones (portrait and landscape)
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)
+
+// Smartphones (landscape)
+@media only screen and (min-width : 321px)
+
+// Smartphones (portrait)
+@media only screen and (max-width : 320px)
+
+// iPads (portrait and landscape)
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)
+
+// iPads (landscape)
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)
+
+// iPads (portrait)
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)
+
+// Desktops and laptops
+@media only screen and (min-width : 1224px)
+
+// Large screens
+@media only screen and (min-width : 1824px)
+
+// iPhone 4
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)
+**/
