@@ -2,14 +2,17 @@
 - var hyperlinks = function(text){return text.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig,"<a href='$1'>$1</a>"); }
 - var emails = function(text){return text.replace(/(\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)/,"<a href=\"mailto:$1\">$1</a>");}
 - var processText = function(text){return emails(hyperlinks(text));}
+- var split = function(val,def,prepend,i){i = 0;l=prepend.length;val = (val ? val+"" : def).split(',');while(val.length<prepend.length){val.push(val[val.length-1])};for(i;i<l;i++){val[i] = prepend[i]+'-'+val[i];}; return val.join(' ');}
 
 mixin card(card,uid)
-	- var size = 'card-'+(card.columns? card.columns : 1);
+	- var sizes = ['phone','pad','laptop','desktop'];
+	- var size = split(card.columns,'1',sizes);
+	- var shift = split(card.shift,'l',sizes);
+	- var theme = 'theme-' + (card.theme?card.theme:'a');
+	- var classes = size+' '+shift+' '+theme
 	- var length = card.content && card.content.length || 0;
 	- if(card.header === true){card.header = card.title || card.name || card.slug;}
 	- if(card.clap === true){card.clap = card.title || card.name || card.slug;}
-	- var theme = ' theme-' + (card.theme?card.theme:'a');
-	- var classes = size+theme
 	.card.slider(class=classes,id='card-'+uid)
 		+anchor(uid)
 		.slides(style="left:0px")
@@ -33,7 +36,7 @@ mixin card(card,uid)
 
 mixin map(item,card)
 	.google-maps
-		iframe(src=item.map,width="600",height="450",frameborder="0",style="border:0",scrolling="no",marginheight="0",marginwidth="0")
+		iframe(src=item.map,width="450",height="450",frameborder="0",style="border:0",scrolling="no",marginheight="0",marginwidth="0")
 
 mixin text(item,card)
 	- if(Object.prototype.toString.call(item.text) === '[object Array]'){
