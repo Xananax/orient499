@@ -7,18 +7,9 @@ body
 	font-size 1em
 	font-family bodyTextFont
 
-h1,h2,h3,h4,h5
-	font-weight 300
-	font-family titlesTextFont
-	text-transform titlesTextTransform
-
 html,body
 	padding 0
 	margin 0
-
-body
-	background-color bodyBG
-	font-size 1.5em
 
 .anchor
 	display block
@@ -28,14 +19,15 @@ body
 
 #Main
 	margin 0 auto
-	position relative
+	position static
 	display block
 	width 100%
+	min-height 100%
 	clearfix()
 
 #Wrapper
 	margin 0 auto
-	position relative
+	position static
 	display table
 	width inherit
 	max-width inherit
@@ -53,25 +45,7 @@ body
 	margin 0 auto
 	width inherit
 	max-width inherit
-	background footerColorFG
-	color footerColorBG
 	height footerHeight
-
-.google-maps
-	position: relative
-	height 0
-	width 100%
-	height 100%
-	overflow hidden
-
-.google-maps iframe
-	position absolute
-	top 0
-	left 0
-	bottom 0
-	right 0
-	width 100% !important
-	height 100% !important
 
 @import "_css/utils"
 @import "_css/fontawesome"
@@ -84,33 +58,26 @@ body
 @import "_css/themes"
 @import "_css/mutnt"
 
+body
+	height 100%
 
-/**
+.close
+	@extend .fa
+	@extend .fa-times
+	position absolute
+	top 0
+	right 0
+	text-decoration none
+	display none
 
-// Smartphones (portrait and landscape)
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px)
-
-// Smartphones (landscape)
-@media only screen and (min-width : 321px)
-
-// Smartphones (portrait)
-@media only screen and (max-width : 320px)
-
-// iPads (portrait and landscape)
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)
-
-// iPads (landscape)
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)
-
-// iPads (portrait)
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)
-
-// Desktops and laptops
-@media only screen and (min-width : 1224px)
-
-// Large screens
-@media only screen and (min-width : 1824px)
-
-// iPhone 4
-@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)
-**/
+.card
+	position relative
+	&.active
+		position fixed
+		width 100%
+		height 100%
+		left 0
+		top 0
+		z-index 99
+		.close
+			display block
