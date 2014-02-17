@@ -1,3 +1,4 @@
+include _mixins
 doctype
 html
 	head
@@ -10,8 +11,10 @@ html
 		script(src="script.js")
 		title=title
 	body
-		#Wrapper
-			!= yield
+		#fb-root
+		#Main
+			#Wrapper
+				!= yield
 			#Footer
 				.copyright!=copyright
 				.mutnt.tooltip-trigger
@@ -19,3 +22,4 @@ html
 					.mutnt-tdext.tooltip
 						.mutnt-logo
 						.mutnt-text website developped by mutnt
+			+menu(url,title,social,card)

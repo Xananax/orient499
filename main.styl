@@ -26,19 +26,33 @@ body
 	left 0
 	top - (menuHeight * 2)
 
+#Main
+	margin 0 auto
+	position relative
+	display block
+	width 100%
+	clearfix()
+
 #Wrapper
 	margin 0 auto
-	width cardWidth
 	position relative
+	display table
+	width inherit
+	max-width inherit
 	margin-top (menuHeight * 2)
 	clearfix()
+
+#Menu
+	width inherit
+	max-width inherit
+	margin 0 auto
 
 #Footer
 	position relative
 	display block
-	float left
-	width cardWidth
 	margin 0 auto
+	width inherit
+	max-width inherit
 	background footerColorFG
 	color footerColorBG
 	height footerHeight
@@ -66,10 +80,9 @@ body
 @import "_css/text"
 @import "_css/dots"
 @import "_css/navigation"
-@import "_css/card"
+@import "_css/responsive"
 @import "_css/themes"
 @import "_css/mutnt"
-@import "_css/responsive"
 
 
 /**
