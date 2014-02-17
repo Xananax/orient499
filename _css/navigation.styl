@@ -4,11 +4,8 @@
 	top 0
 	margin 0 auto
 	height (menuHeight * 2)
-	background menuBG
 	overflow hidden
 	a
-		color menuLinkFG
-		background-color menuLinkBG
 		box-sizing border-box
 		display block
 		text-align center
@@ -16,11 +13,6 @@
 		background-position 50% 50%
 		background-repeat no-repeat
 		height 100%
-		&:visited
-			color menuLinkFG
-		&:hover
-			color menuLinkHoverFG
-			background-color menuLinkHoverBG
 	.logo
 		float left
 		width 100%
@@ -29,7 +21,6 @@
 			display block
 			width inherit
 			height inherit
-			background-image url('/photos/logo.jpg')
 			span
 				@extend .visuallyhidden
 	.links,.social

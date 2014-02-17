@@ -2,7 +2,7 @@ headerHeight = 4em
 body
 	font-size 1em
 .slider-header, .slider-title
-	background red
+	background headerMobileBG
 	height headerHeight
 .card
 	position relative
@@ -10,7 +10,6 @@ body
 	overflow hidden
 	if cardRadius
 		border-radius cardRadius
-	background-color #ccc
 	box-sizing border-box
 	margin cardMargin
 	float left 
@@ -29,7 +28,7 @@ body
 		height: 0;
 		border-width: 1em;
 		border-style: solid;
-		border-color: red transparent transparent transparent;
+		border-color: headerMobileBG transparent transparent transparent;
 		bottom - 2em
 		left 42.5%
 .phone-1
