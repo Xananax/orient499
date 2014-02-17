@@ -1,3 +1,7 @@
+headerHeight = 4em
+.slider-header, .slider-title
+	background red
+	height headerHeight
 .card
 	position relative
 	height cardHeight
@@ -7,7 +11,25 @@
 	background-color #ccc
 	box-sizing border-box
 	margin cardMargin
-	float left
+	float left 
+.has-header, .has-clap
+	height (cardHeight + headerHeight)
+.slider-header, .slider-title
+	position absolute
+	top 0
+	left 0
+	width 100%
+	&:after 
+		display block
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-width: 1em;
+		border-style: solid;
+		border-color: red transparent transparent transparent;
+		bottom - 2em
+		left 42.5%
 .phone-1
 	width 50%
 .phone-2

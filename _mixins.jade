@@ -13,6 +13,8 @@ mixin card(card,uid)
 	- var length = card.content && card.content.length || 0;
 	- if(card.header === true){card.header = card.title || card.name || card.slug;}
 	- if(card.clap === true){card.clap = card.title || card.name || card.slug;}
+	- if(card.header){classes+=' has-header';}
+	- if(card.clap){classes+=' has-clap';}
 	.card.slider(class=classes,id='card-'+uid)
 		+anchor(uid)
 		.slides(style="left:0px")
