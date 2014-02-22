@@ -1,0 +1,148 @@
+{
+	"index":{
+		"title":"Orient 499"
+	,	"url":"http://localhost:9000"
+	,	"meta":{
+			"keywords":"orient artisanat clothes"
+		}
+	,	"social":[
+			{"name":"facebook","address":"orient499"}
+		,	{"name":"instagram","address":"orient499"}
+		]
+	,	"copyright":"Orient 499 &copy;"
+	,	"cards":[
+			{
+				"title":"About"
+			,	"slug":"about"
+			,	"pin":true
+			,	"columns":"4,4,4"
+			,	"header":"about"
+			,	"content":[
+					{
+						"text":"Frank Luca and Aida Kawas, two lovers of Middle-Eastern arts, teamed up to create Orient 499, a trendy boutique which would accommodate at the same time their taste for tradition and their sense of modernity, all the while statisfying their crave for something new."
+					}
+				,	{
+						"text":"Orient 499 is a boutique but also an atelier, featuring exclusive, original handicrafts and designer's creations. Our items vary from antiques to modern furniture, clothes and accessories mainly made in Lebanon, but also from Syria, Turkey, Morocco...Transcending time, Orient 499 remains the anchor of oriental tradition."
+					}
+					]
+			}
+		,	{
+				"title":"Clothes"
+			,	"slug":"clothes"
+			,	"clap":true
+			,	"pin":true
+			,	"columns":"4,1,2"
+			,	"basepathprefix":"photos/clothes/clothes-"
+			,	"basepathsuffix":".jpg"
+			,	"theme":"a"
+			,	"content":[
+					{
+						"name":"Some Name"
+					,	"filename":"010"
+					,	"caption":"some testing caption"
+					,	"focus":"top"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"020"
+					,	"focus":"top"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"030"
+					,	"caption":"some testing caption"
+					,	"focus":"top"
+					}
+				]
+			}
+		,	{
+				"title":"Objects"
+			,	"slug":"objects"
+			,	"clap":true
+			,	"pin":true
+			,	"columns":"4,1,2"
+			,	"basepathprefix":"photos/objects/objects-"
+			,	"basepathsuffix":".jpg"
+			,	"content":[
+					{
+						"name":"Some Name"
+					,	"filename":"010"
+					,	"caption":"some testing caption"
+					,	"focus":"top"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"020"
+					,	"focus":"top"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"030"
+					,	"caption":"some testing caption"
+					,	"focus":"top"
+					}
+				]
+			}
+		,	{
+				"title":"Press"
+			,	"slug":"press"
+			,	"clap":true
+			,	"pin":false
+			,	"columns":"4,1"
+			,	"shift":"l,l,r"
+			,	"theme":"a clap-opaque"
+			,	"basepathprefix":"photos/press/press-"
+			,	"basepathsuffix":".jpg"
+			,	"content":[
+					{
+						"name":"Some Name"
+					,	"filename":"1"
+					,	"focus":"bottom,right"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"2"
+					,	"focus":"bottom,right"
+					}
+				,	{
+						"name":"Some Name"
+					,	"filename":"3"
+					,	"focus":"bottom,right"
+					}
+				]
+			}
+		,	{
+				"title":"Contact Us"
+			,	"slug":"contact"
+			,	"pin":true
+			,	"columns":"4,1"
+			,	"content":[
+					{
+						"text":[
+							"499, Omar Daouk Str"
+						,	"Hammoud bldg"
+						,	"Mina El Hosn"
+						,	"Beirut, Lebanon"
+						,	""
+						,	"Cell: 961 3 411 624"
+						,	"Phone: 961 1 369 499"
+						,	"Fax: 961 1 369 499"
+						,	"Email: orient499@orient499.com"
+						]
+					}
+				]
+			}
+		,	{
+				"title":"Map"
+			,	"slug":"map"
+			,	"columns":"4,2"
+			,	"pin":false
+			,	"content":[
+					{
+						"map":"https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804"
+					}
+				]
+			}
+		]
+	}
+}

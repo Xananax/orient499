@@ -1,0 +1,2 @@
+rm -rf public/script.js && browserify -t jadeify public/_js/main.js > public/script.js
+

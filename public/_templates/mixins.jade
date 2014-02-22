@@ -1,0 +1,18 @@
+mixin menu(url,title,social,card)
+	#Menu.nav
+		.nav-section.logo
+			a(href=url)
+				span=title
+		.nav-section.social
+			.nav-inner
+				each icon in social
+					+social-link(icon)
+		.nav-section.links
+			.nav-inner
+				each card,i in cards
+					- var uid = card.slug ? card.slug : 'card-'+i;
+					if card.pin
+						a(href="#"+uid)=card.title
+
+mixin social-link(provider)
+	a.fa.social-link(href='http://www.'+provider.name+'.com/'+provider.address,class='fa-'+provider.name,target="_blank")

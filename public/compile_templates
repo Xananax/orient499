@@ -1,0 +1,1 @@
+clientjade -c _mixins.jade > js/templates.js

@@ -1,0 +1,70 @@
+body
+	font-size 0.8em
+
+.dots
+	font-size 1em
+.slider-control
+	display block
+.card
+	position relative
+	height cardHeight
+	overflow hidden
+	if cardRadius
+		border-radius cardRadius
+	background-color #ccc
+	box-sizing border-box
+	margin cardMargin
+	float left
+.has-header, .has-clap
+	height cardHeight
+.slider-header, .slider-title
+	background transparent
+	&:after
+		content none
+		display none
+.slider-title
+	width 100%
+	height 100%
+	background clapBG
+	color clapFG
+	position absolute
+	top 0
+	left 0
+	text-align center
+	box-sizing border-box
+	transition top animationSpeedMid ease-in-out 6s
+	.slider-title-inner
+		position absolute
+		width 100%
+		height 100%
+		display table
+		h1
+			display table-cell
+			vertical-align middle
+			text-align center
+.slider
+	text-align center
+	&:hover, &.active, &:focus
+		.slider-title
+			top 100%
+			transition top animationSpeedFast ease-in-out
+.slider-header
+	left textMargins
+	width auto
+
+.phone-0
+	display block
+.pad-1
+	width 33.33%
+.pad-2
+	width 66.66%
+.pad-3
+	width 100%
+.pad-4
+	width 100%
+#Main
+	max-width (cardWidth * 3)
+.pad-l
+	float left
+.pad-r
+	float right

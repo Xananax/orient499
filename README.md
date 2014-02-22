@@ -6,4 +6,11 @@ git submodule init
 
 git submodule update
 
-harp server .
+
+harp server public
+
+OR
+
+npm install
+
+node app.js

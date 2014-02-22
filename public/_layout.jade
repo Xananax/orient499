@@ -1,0 +1,25 @@
+include _templates/mixins
+doctype
+html
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible",content="IE=edge")
+		meta(name="viewport",content="width=device-width, initial-scale=1")
+		meta(name="description",content=title+' '+meta.keywords)
+		link(rel="stylesheet", href="/main.css")
+		script(src="script.js")
+		title=title
+	body
+		#fb-root
+		#Main
+			#Wrapper
+				!= yield
+				.fb-like-box(data-href="http://www.facebook.com/orient499",data-width="320",data-height="320",data-colorscheme="light",data-show-faces="true",data-header="true",data-stream="false",data-show-border="true")
+			#Footer
+				.copyright!=copyright
+				.mutnt.tooltip-trigger
+					a.mutnt-logo-square(href="http://mutnt.net",target="_blank")
+					.mutnt-tdext.tooltip
+						.mutnt-logo
+						.mutnt-text website developped by mutnt
+			+menu(url,title,social,card)

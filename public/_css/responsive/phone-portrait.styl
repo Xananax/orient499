@@ -1,0 +1,51 @@
+headerHeight = 4em
+body
+	font-size 1em
+.slider-header, .slider-title
+	background headerMobileBG
+	height headerHeight
+.card
+	position relative
+	height cardHeight
+	overflow hidden
+	if cardRadius
+		border-radius cardRadius
+	box-sizing border-box
+	margin cardMargin
+	float left 
+.has-header, .has-clap
+	height (cardHeight + headerHeight)
+.slider-header, .slider-title
+	position absolute
+	top 0
+	left 0
+	width 100%
+	&:after 
+		display block
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-width: 1em;
+		border-style: solid;
+		border-color: headerMobileBG transparent transparent transparent;
+		bottom - 2em
+		left 42.5%
+.phone-1
+	width 50%
+.phone-2
+	width 50%
+.phone-3
+	width 100%
+.phone-4
+	width 100%
+.phone-0, .pad-0, .laptop-0, .desktop-0
+	display none
+.phone-l
+	float left
+.phone-r
+	float right
+
+#Main
+	max-width 100%
+	//max-width cardWidth
