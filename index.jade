@@ -1,5 +1,0 @@
-include _mixins
-
-each card,i in cards
-	- var uid = card.slug ? card.slug : 'card-'+i;
-	+card(card,uid)

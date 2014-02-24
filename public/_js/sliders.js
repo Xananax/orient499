@@ -48,13 +48,13 @@ module.exports = function($Wrapper){
 	}).on('swipeleft', '.slides',function(e) {
 		var $slider = $(this)
 		,	$card = $slider.parent()
-		,	direction = -1
+		,	direction = 1
 		;
 		nextPrev($card,$slider,direction);
 	}).on('swiperight', '.slides',function(e) {
 		var $slider = $(this)
 		,	$card = $slider.parent()
-		,	direction = 1
+		,	direction = -1
 		;
 		nextPrev($card,$slider,direction);
 	});

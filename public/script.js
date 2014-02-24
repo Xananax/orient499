@@ -9988,8 +9988,6 @@ module.exports = function(options){
 },{}],8:[function(require,module,exports){
 var $ = require('jquery-browserify')
 ,	jquery_swipe = require('./jquerypp.swipe.js')
-//,	jquery_move = require('./jquery.event.move.js')
-//,	jquery_swipe = require('./jquery.event.swipe.js')
 ,	sliders = require('./sliders.js')
 ,	api = {
 		facebook: require('./apis/facebook.js')
@@ -10081,16 +10079,14 @@ module.exports = function($Wrapper){
 	}).on('swipeleft', '.slides',function(e) {
 		var $slider = $(this)
 		,	$card = $slider.parent()
-		,	direction = -1
+		,	direction = 1
 		;
-		console.log('a')
 		nextPrev($card,$slider,direction);
 	}).on('swiperight', '.slides',function(e) {
 		var $slider = $(this)
 		,	$card = $slider.parent()
-		,	direction = 1
+		,	direction = -1
 		;
-		console.log('b')
 		nextPrev($card,$slider,direction);
 	});
 
