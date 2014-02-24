@@ -75,6 +75,9 @@ module.exports = function(options){
 	,	url: request.url
 	,	data: request.data
 	,	success: tumblr_callback
+	,	error:function(err){
+			console.log(err)
+		}
 	});
 
 };

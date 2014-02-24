@@ -37,6 +37,9 @@ module.exports = function(options){
 		,	jsonp : "tumblr_callback"
 		}
 	,	success: tumblr_callback
+	,	error:function(err){
+			console.log(err)
+		}
 	});
 
 }

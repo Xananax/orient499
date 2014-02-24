@@ -3,6 +3,7 @@ todo
 - fix footer text alignement
 - fix theme
 - microformats http://microformats.org/
-- add animation to modal box
+- modal box
 - support swipe on mobile
-- automate images sizing
+- on mobile, hide logo when user scrolls down
+- fix tooltip
