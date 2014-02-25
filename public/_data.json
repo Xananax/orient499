@@ -31,6 +31,7 @@
 			,	"slug":"clothes"
 			,	"clap":true
 			,	"pin":true
+			,	"loop":true
 			,	"columns":"4,1,2"
 			,	"basepathprefix":"photos/clothes/clothes-"
 			,	"basepathsuffix":".jpg"

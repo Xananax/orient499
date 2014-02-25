@@ -15,9 +15,10 @@ mixin card(card,uid)
 	- if(card.clap === true){card.clap = card.title || card.name || card.slug;}
 	- if(card.header){classes+=' has-header';}
 	- if(card.clap){classes+=' has-clap';}
+	- if(!card.loop){classes+=' position-first-page';}
 	.card.slider(class=classes,id='card-'+uid)
 		+anchor(uid)
-		.slides(style="left:0px",data-images=length,data-slug=uid)
+		.slides(style="left:0px",data-images=length,data-slug=uid,class=(card.loop?'slider-loop':''))
 			each item,num in card.content
 				- var className = looper(num,length);
 				.slide(id=uid+'-'+num,class=className)

@@ -24,7 +24,9 @@
 	@extend .fa-spin
 
 .image-inner
-	position relative
+	position absolute
+	-webkit-backface-visibility hidden
+	-webkit-transform translateZ(0)
 	&.image-focus-center-center
 		background-position 50% 50%
 	&.image-focus-center-left

@@ -2,9 +2,9 @@ var $ = require('jquery-browserify')
 ,	jquery_swipe = require('./jquerypp.swipe.js')
 ,	sliders = require('./sliders.js')
 ,	api = {
-		facebook: require('./apis/facebook.js')
-	,	instagram: require('./apis/instagram.js')
-	,	tumblr: require('./apis/tumblr')
+//		facebook: require('./apis/facebook.js')
+//	,	instagram: require('./apis/instagram.js')
+//	,	tumblr: require('./apis/tumblr')
 	}
 ,	templates = {
 		card: require('../_templates/card.jade')

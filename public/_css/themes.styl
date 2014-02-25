@@ -89,6 +89,28 @@ h1,h2,h3,h4,h5
 	padding .4em
 	border-radius 1.2em
 
+.slider-control
+	box-sizing border-box
+	height sliderControlHeight
+	width sliderControlHeight
+	//border-radius (sliderControlHeight/2)
+	i
+		@extend .fa-{sliderArrowsClass}-left
+		font-size sliderControlHeight
+	&.slider-control-right
+		i
+			@extend .fa-{sliderArrowsClass}-right
+	&:focus,&:active,&:hover
+		background transparent
+
+.position-first-page
+	.slider-control-left
+		display none
+
+.position-last-page
+	.slider-control-right
+		display none
+
 //////////////// THEME A /////////////////////
 .theme-a
 	//texts

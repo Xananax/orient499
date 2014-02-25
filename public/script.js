@@ -9548,171 +9548,6 @@ return jQuery;
 })( window ); }));
 
 },{}],4:[function(require,module,exports){
-module.exports = function(options){
-	/// https://graph.facebook.com/oauth/access_token?client_id=169542825986&client_secret=03aa2945bd10b68297f1068c90497d72&grant_type=client_credentials
-	var facebook_callback = function(data){
-		data = data.data;
-		$.each(data, function(i,v){
-			if(this.from.name!="Orient 499" || !this.object_id){return;}
-			var card = {
-				title: this.name || false
-			,	id: this.object_id
-			,	slug: this.object_id
-			,	columns: "1,1,1,1"
-			,	content: []
-			}
-			if(this.type == 'photo'){
-				card.content.push({
-					filename:'http://graph.facebook.com/'+this.object_id+'/picture?type=normal'
-				,	caption: this.message
-				})
-			}else{
-				card.content.push(					{
-					text: this.message
-				})
-			}
-			options.insertion.append(options.template({card:card}));
-		})
-	}
-	$.ajax({
-		url:"https://graph.facebook.com/"+options.client_id+"/posts?access_token="+options.access_token
-	,	success:facebook_callback
-	,	error:function(err){
-			console.log(err)
-		}
-	});
-}
-},{}],5:[function(require,module,exports){
-// based on  Code http://potomak.github.io/jquery-instagram/
-
-var defaults = {
-	accessToken: null
-,	clientId: null
-,	count: null
-,	url: null
-,	hash: null
-,	userId: null
-,	location: null
-,	search: null
-};
-
-function composeRequest(options){
-
-	var url = 'https://api.instagram.com/v1';
-	var data = {};
-
-	if (!options.access_token && !options.client_id) {throw 'You must provide an access token or a client id';}
-
-	data = $.extend(data,{
-		access_token: options.access_token,
-		client_id: options.client_id,
-		count: options.count
-	});
-
-	if (options.url != null) {url = options.url;}
-	else if (options.hash != null) {url += '/tags/' + options.hash + '/media/recent';}
-	else if (options.search != null) {
-		url += '/media/search';
-		data = $.extend(data, options.search);
-	}
-	else if (options.userId != null) {
-		if (options.accessToken == null){throw 'You must provide an access token';}
-		url += '/users/' + options.userId + '/media/recent';
-	}
-	else if (options.location != null) {
-		url += '/locations/' + options.location.id + '/media/recent';
-		delete options.location.id;
-		data = $.extend(data, options.location);
-	}
-	else {
-		url += '/media/popular';
-	}
-	
-	return {url: url, data: data};
-}
-
-module.exports = function(options){
-
-	var that = this;
-	options = $.extend({}, defaults, options);
-	var request = composeRequest(options);
-
-	var tumblr_callback = function(data){
-		data = data.data;
-		$.each(data,function(i,v){
-			if(this.type!='image'){return;}
-			var card = {
-				title: this.name || false
-			,	id: this.object_id
-			,	slug: this.object_id
-			,	columns: "1,1,1,1"
-			,	content: [{
-					filename: this.images.standard_resolution.url
-				,	caption: this.message
-				}]
-			};
-			options.insertion.append(options.template({card:card}));
-		})
-	}
-
-	$.ajax({
-		dataType: "jsonp"
-	,	url: request.url
-	,	data: request.data
-	,	success: tumblr_callback
-	,	error:function(err){
-			console.log(err)
-		}
-	});
-
-};
-},{}],6:[function(require,module,exports){
-module.exports = function(options){
-
-	tumblr_callback = function(data){
-		data = data.response.posts;
-		$.each(data,function(i,v){
-			var card = {
-				id: this.object_id
-			,	slug: this.slug
-			,	columns: "1,1,1,1"
-			,	content: []
-			};
-			if(this.photos && this.photos.length){
-				$.each(this.photos,function(){
-					card.content.push({
-						filename: this.original_size.url
-					,	caption: this.caption
-					})
-				})
-			}
-			if(this.caption){
-				card.content.push({
-					text: this.caption
-				})
-			}
-			options.insertion.append(options.template({card:card}));
-		})
-
-	}
-
-	$.ajax({
-		type: "GET"
-	,	url : "http://api.tumblr.com/v2/blog/"+options.client_id+"/posts"
-	,	method:'get'
-	,	dataType: "jsonp"
-	,	data: {
-			api_key : options.consumer_key
-		,	jsonp : "tumblr_callback"
-		}
-	,	success: tumblr_callback
-	,	error:function(err){
-			console.log(err)
-		}
-	});
-
-}
-},{}],7:[function(require,module,exports){
 /*!
  * jQuery++ - 1.0.1
  * http://jquerypp.com
@@ -9985,14 +9820,14 @@ module.exports = function(options){
         return $;
     })($, __m3);
 })(jQuery);
-},{}],8:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var $ = require('jquery-browserify')
 ,	jquery_swipe = require('./jquerypp.swipe.js')
 ,	sliders = require('./sliders.js')
 ,	api = {
-		facebook: require('./apis/facebook.js')
-	,	instagram: require('./apis/instagram.js')
-	,	tumblr: require('./apis/tumblr')
+//		facebook: require('./apis/facebook.js')
+//	,	instagram: require('./apis/instagram.js')
+//	,	tumblr: require('./apis/tumblr')
 	}
 ,	templates = {
 		card: require('../_templates/card.jade')
@@ -10028,31 +9863,45 @@ $(function(){
 	}
 });
 
-},{"../_templates/card.jade":10,"./apis/facebook.js":4,"./apis/instagram.js":5,"./apis/tumblr":6,"./jquerypp.swipe.js":7,"./sliders.js":9,"jquery-browserify":3}],9:[function(require,module,exports){
+},{"../_templates/card.jade":7,"./jquerypp.swipe.js":4,"./sliders.js":6,"jquery-browserify":3}],6:[function(require,module,exports){
 module.exports = function($Wrapper){
-	var go = function(currentSlide,$card,$slider,$dot){
+	var go = function(nextSlide,$card,$slider,$dot,loop,totalImages,currentSlide){
 		var	uid = $slider.data('slug')
 		,	$nextImage
 		,	$dots = $('.dot',$card)
+		,	loop = loop || $slider.hasClass('slider-loop')
+		,	totalImages = (!loop) ? totalImages || $slider.data('images') -1 : false
+		,	currentSlide = (!loop) ? currentSlide || $slider.data('currentSlide') || 0 : false
 		,	left = 0
 		;
-		$slider.data('currentSlide', currentSlide);
-		$nextImage = $('#'+uid+'-'+currentSlide);
-		$dot = $dot || $('#'+uid+'-dot-'+currentSlide);
+		$slider.data('currentSlide', nextSlide);
+		$nextImage = $('#'+uid+'-'+nextSlide);
+		$dot = $dot || $('#'+uid+'-dot-'+nextSlide);
 		$dots.not($dot.addClass('active')).removeClass('active');
 		left = $nextImage.position().left;
 		left*=-1;
 		$slider.css('left',left+'px');
+		if(!loop){
+			if(nextSlide==0){$card.addClass('position-first-page').removeClass('position-last-page');}
+			else if(nextSlide==totalImages){$card.addClass('position-last-page').removeClass('position-first-page');}
+			else{$card.removeClass('position-first-page').removeClass('position-last-page');}
+		}
 	}
 
 	var nextPrev = function($card,$slider, direction){
 		var	currentSlide = $slider.data('currentSlide') || 0
+		,	nextSlide = currentSlide
+		,	loop = $slider.hasClass('slider-loop')
 		,	totalImages = $slider.data('images') -1
 		;
-		currentSlide = currentSlide + (1 * direction);
-		if(currentSlide > totalImages){currentSlide = 0;}
-		if(currentSlide < 0){currentSlide = totalImages;}
-		go(currentSlide,$card,$slider)
+		nextSlide = currentSlide + (1 * direction);
+		if(nextSlide > totalImages){
+			nextSlide = loop ? 0 : currentSlide;
+		}
+		else if(nextSlide < 0){
+			nextSlide = loop ? totalImages : currentSlide;
+		}
+		go(nextSlide,$card,$slider,null,loop,totalImages,currentSlide)
 	}
 
 	$Wrapper.on('click','.slider-control',function(e){
@@ -10091,7 +9940,7 @@ module.exports = function($Wrapper){
 	});
 
 }
-},{}],10:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var jade = require("jade/runtime");
 
 module.exports = function template(locals) {
@@ -10115,7 +9964,7 @@ if(card.header === true){card.header = card.title || card.name || card.slug;}
 if(card.clap === true){card.clap = card.title || card.name || card.slug;}
 if(card.header){classes+=' has-header';}
 if(card.clap){classes+=' has-clap';}
-buf.push("<div" + (jade.attr("id", 'card-'+uid, true, false)) + (jade.cls(['card','slider',classes], [null,null,true])) + ">");
+buf.push("<div" + (jade.attr("id", 'card-'+uid, true, false)) + (jade.cls(['card','slider','position-first-page',classes], [null,null,null,true])) + ">");
 jade_mixins["anchor"](uid);
 buf.push("<div style=\"left:0px\"" + (jade.attr("data-images", length, true, false)) + (jade.attr("data-slug", uid, true, false)) + " class=\"slides\">");
 // iterate card.content
@@ -10272,4 +10121,4 @@ buf.push("<div class=\"slider-controls\"><a href=\"#\" data-dir=\"left\" class=\
 var uid = card.slug ? card.slug : 'card-'+i;
 jade_mixins["card"](card,uid);;return buf.join("");
 };
-},{"jade/runtime":2}]},{},[8])
+},{"jade/runtime":2}]},{},[5])

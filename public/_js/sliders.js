@@ -1,27 +1,41 @@
 module.exports = function($Wrapper){
-	var go = function(currentSlide,$card,$slider,$dot){
+	var go = function(nextSlide,$card,$slider,$dot,loop,totalImages,currentSlide){
 		var	uid = $slider.data('slug')
 		,	$nextImage
 		,	$dots = $('.dot',$card)
+		,	loop = loop || $slider.hasClass('slider-loop')
+		,	totalImages = (!loop) ? totalImages || $slider.data('images') -1 : false
+		,	currentSlide = (!loop) ? currentSlide || $slider.data('currentSlide') || 0 : false
 		,	left = 0
 		;
-		$slider.data('currentSlide', currentSlide);
-		$nextImage = $('#'+uid+'-'+currentSlide);
-		$dot = $dot || $('#'+uid+'-dot-'+currentSlide);
+		$slider.data('currentSlide', nextSlide);
+		$nextImage = $('#'+uid+'-'+nextSlide);
+		$dot = $dot || $('#'+uid+'-dot-'+nextSlide);
 		$dots.not($dot.addClass('active')).removeClass('active');
 		left = $nextImage.position().left;
 		left*=-1;
 		$slider.css('left',left+'px');
+		if(!loop){
+			if(nextSlide==0){$card.addClass('position-first-page').removeClass('position-last-page');}
+			else if(nextSlide==totalImages){$card.addClass('position-last-page').removeClass('position-first-page');}
+			else{$card.removeClass('position-first-page').removeClass('position-last-page');}
+		}
 	}
 
 	var nextPrev = function($card,$slider, direction){
 		var	currentSlide = $slider.data('currentSlide') || 0
+		,	nextSlide = currentSlide
+		,	loop = $slider.hasClass('slider-loop')
 		,	totalImages = $slider.data('images') -1
 		;
-		currentSlide = currentSlide + (1 * direction);
-		if(currentSlide > totalImages){currentSlide = 0;}
-		if(currentSlide < 0){currentSlide = totalImages;}
-		go(currentSlide,$card,$slider)
+		nextSlide = currentSlide + (1 * direction);
+		if(nextSlide > totalImages){
+			nextSlide = loop ? 0 : currentSlide;
+		}
+		else if(nextSlide < 0){
+			nextSlide = loop ? totalImages : currentSlide;
+		}
+		go(nextSlide,$card,$slider,null,loop,totalImages,currentSlide)
 	}
 
 	$Wrapper.on('click','.slider-control',function(e){
