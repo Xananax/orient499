@@ -9739,9 +9739,9 @@ return jQuery;
 
             delay: 500,
 
-            max: 320,
+            max: 5000,
 
-            min: 30
+            min: 20
         };
 
         $.event.setupHelper([
@@ -9964,9 +9964,10 @@ if(card.header === true){card.header = card.title || card.name || card.slug;}
 if(card.clap === true){card.clap = card.title || card.name || card.slug;}
 if(card.header){classes+=' has-header';}
 if(card.clap){classes+=' has-clap';}
-buf.push("<div" + (jade.attr("id", 'card-'+uid, true, false)) + (jade.cls(['card','slider','position-first-page',classes], [null,null,null,true])) + ">");
+if(!card.loop){classes+=' position-first-page';}
+buf.push("<div" + (jade.attr("id", 'card-'+uid, true, false)) + (jade.cls(['card','slider',classes], [null,null,true])) + ">");
 jade_mixins["anchor"](uid);
-buf.push("<div style=\"left:0px\"" + (jade.attr("data-images", length, true, false)) + (jade.attr("data-slug", uid, true, false)) + " class=\"slides\">");
+buf.push("<div style=\"left:0px\"" + (jade.attr("data-images", length, true, false)) + (jade.attr("data-slug", uid, true, false)) + (jade.cls(['slides',(card.loop?'slider-loop':'')], [null,true])) + ">");
 // iterate card.content
 ;(function(){
   var $$obj = card.content;

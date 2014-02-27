@@ -189,9 +189,9 @@
 
             delay: 500,
 
-            max: 320,
+            max: 5000,
 
-            min: 30
+            min: 20
         };
 
         $.event.setupHelper([
