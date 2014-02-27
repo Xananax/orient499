@@ -1,7 +1,7 @@
 .mutnt
 	position absolute
 	top (footerHeight/4)
-	right (footerHeight/4)
+	right ((footerHeight/4) + toolTipPointerSize)
 	.mutnt-logo-square
 		display block
 		width (footerHeight /2)
@@ -17,3 +17,8 @@
 		background-size contain
 .mutnt-text
 	color #000
+	&.tooltip
+		left - (toolTipWidth - (footerHeight/4))
+		&:after
+			left auto
+			right toolTipPointerSize

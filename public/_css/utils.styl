@@ -26,14 +26,14 @@
 		border-radius toolTipBorderRadius
 		transition opacity 1s
 		&:after 
-			content: "";
-			position: absolute;
-			width: 0;
-			height: 0;
-			border-width: toolTipPointerSize;
-			border-style: solid;
-			border-color: toolTipColor transparent transparent transparent;
-			bottom - (toolTipPointerSize*2)
+			content ""
+			position absolute
+			width 0
+			height 0
+			border-width toolTipPointerSize
+			border-style solid
+			border-color toolTipColor transparent transparent transparent
+			bottom - ((toolTipPointerSize*2) - .2em)
 			left ((toolTipWidth / 2) - (toolTipPointerSize / 4))
 		p
 			padding 0
