@@ -2,14 +2,15 @@
 - var hyperlinks = function(text){return text.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig,"<a href='$1'>$1</a>"); }
 - var emails = function(text){return text.replace(/(\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)/,"<a href=\"mailto:$1\">$1</a>");}
 - var processText = function(text){return emails(hyperlinks(text));}
-- var split = function(val,def,prepend,i){i = 0;l=prepend.length;val = (val ? val+"" : def).split(',');while(val.length<prepend.length){val.push(val[val.length-1])};for(i;i<l;i++){val[i] = prepend[i]+'-'+val[i];}; return val.join(' ');}
+- var split = function(val,def,prepend,prefix,i){i = 0;l=prepend.length;prefix=prefix&&prefix+'-'||'';val = (val ? val+"" : def).split(',');while(val.length<prepend.length){val.push(val[val.length-1])};for(i;i<l;i++){val[i] = prefix+prepend[i]+'-'+val[i];}; return val.join(' ');}
 
 mixin card(card,uid)
 	- var sizes = ['phone','pad','laptop','desktop'];
-	- var size = split(card.columns,'4',sizes);
-	- var shift = split(card.shift,'l',sizes);
+	- var size = split(card.columns,'4',sizes,'');
+	- var shift = split(card.shift,'l',sizes,'');
+	- var rows = split(card.rows,'4',sizes,'rows');
 	- var theme = 'theme-' + (card.theme?card.theme:'a');
-	- var classes = size+' '+shift+' '+theme
+	- var classes = size+' '+shift+' '+theme+' '+rows;
 	- var length = card.content && card.content.length || 0;
 	- if(card.header === true){card.header = card.title || card.name || card.slug;}
 	- if(card.clap === true){card.clap = card.title || card.name || card.slug;}

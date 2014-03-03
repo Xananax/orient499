@@ -1,9 +1,14 @@
 todo
 
-- fix footer text alignement
 - fix theme
 - microformats http://microformats.org/
 - modal box
-- support swipe on mobile
 - on mobile, hide logo when user scrolls down
 - fix tooltip
+- on mobile, check why title hides the top of gallery
+- create a grouping module that can contain sub-cards
+- create a "rows" class to specify height
+- create a gallery module, with thumbnails
+- can we pull albums out of facebook?
+- what e-commerce API can we use client-side?
+- 

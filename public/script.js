@@ -9548,6 +9548,171 @@ return jQuery;
 })( window ); }));
 
 },{}],4:[function(require,module,exports){
+module.exports = function(options){
+	/// https://graph.facebook.com/oauth/access_token?client_id=169542825986&client_secret=03aa2945bd10b68297f1068c90497d72&grant_type=client_credentials
+	var facebook_callback = function(data){
+		data = data.data;
+		$.each(data, function(i,v){
+			if(this.from.name!="Orient 499" || !this.object_id){return;}
+			var card = {
+				title: this.name || false
+			,	id: this.object_id
+			,	slug: this.object_id
+			,	columns: "1,1,1,1"
+			,	content: []
+			}
+			if(this.type == 'photo'){
+				card.content.push({
+					filename:'http://graph.facebook.com/'+this.object_id+'/picture?type=normal'
+				,	caption: this.message
+				})
+			}else{
+				card.content.push(					{
+					text: this.message
+				})
+			}
+			options.insertion.append(options.template({card:card}));
+		})
+	}
+	$.ajax({
+		url:"https://graph.facebook.com/"+options.client_id+"/posts?access_token="+options.access_token
+	,	success:facebook_callback
+	,	error:function(err){
+			console.log(err)
+		}
+	});
+}
+},{}],5:[function(require,module,exports){
+// based on  Code http://potomak.github.io/jquery-instagram/
+
+var defaults = {
+	accessToken: null
+,	clientId: null
+,	count: null
+,	url: null
+,	hash: null
+,	userId: null
+,	location: null
+,	search: null
+};
+
+function composeRequest(options){
+
+	var url = 'https://api.instagram.com/v1';
+	var data = {};
+
+	if (!options.access_token && !options.client_id) {throw 'You must provide an access token or a client id';}
+
+	data = $.extend(data,{
+		access_token: options.access_token,
+		client_id: options.client_id,
+		count: options.count
+	});
+
+	if (options.url != null) {url = options.url;}
+	else if (options.hash != null) {url += '/tags/' + options.hash + '/media/recent';}
+	else if (options.search != null) {
+		url += '/media/search';
+		data = $.extend(data, options.search);
+	}
+	else if (options.userId != null) {
+		if (options.accessToken == null){throw 'You must provide an access token';}
+		url += '/users/' + options.userId + '/media/recent';
+	}
+	else if (options.location != null) {
+		url += '/locations/' + options.location.id + '/media/recent';
+		delete options.location.id;
+		data = $.extend(data, options.location);
+	}
+	else {
+		url += '/media/popular';
+	}
+	
+	return {url: url, data: data};
+}
+
+module.exports = function(options){
+
+	var that = this;
+	options = $.extend({}, defaults, options);
+	var request = composeRequest(options);
+
+	var tumblr_callback = function(data){
+		data = data.data;
+		$.each(data,function(i,v){
+			if(this.type!='image'){return;}
+			var card = {
+				title: this.name || false
+			,	id: this.object_id
+			,	slug: this.object_id
+			,	columns: "1,1,1,1"
+			,	content: [{
+					filename: this.images.standard_resolution.url
+				,	caption: this.message
+				}]
+			};
+			options.insertion.append(options.template({card:card}));
+		})
+	}
+
+	$.ajax({
+		dataType: "jsonp"
+	,	url: request.url
+	,	data: request.data
+	,	success: tumblr_callback
+	,	error:function(err){
+			console.log(err)
+		}
+	});
+
+};
+},{}],6:[function(require,module,exports){
+module.exports = function(options){
+
+	tumblr_callback = function(data){
+		data = data.response.posts;
+		$.each(data,function(i,v){
+			var card = {
+				id: this.object_id
+			,	slug: this.slug
+			,	columns: "1,1,1,1"
+			,	content: []
+			};
+			if(this.photos && this.photos.length){
+				$.each(this.photos,function(){
+					card.content.push({
+						filename: this.original_size.url
+					,	caption: this.caption
+					})
+				})
+			}
+			if(this.caption){
+				card.content.push({
+					text: this.caption
+				})
+			}
+			options.insertion.append(options.template({card:card}));
+		})
+
+	}
+
+	$.ajax({
+		type: "GET"
+	,	url : "http://api.tumblr.com/v2/blog/"+options.client_id+"/posts"
+	,	method:'get'
+	,	dataType: "jsonp"
+	,	data: {
+			api_key : options.consumer_key
+		,	jsonp : "tumblr_callback"
+		}
+	,	success: tumblr_callback
+	,	error:function(err){
+			console.log(err)
+		}
+	});
+
+}
+},{}],7:[function(require,module,exports){
 /*!
  * jQuery++ - 1.0.1
  * http://jquerypp.com
@@ -9820,14 +9985,14 @@ return jQuery;
         return $;
     })($, __m3);
 })(jQuery);
-},{}],5:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 var $ = require('jquery-browserify')
 ,	jquery_swipe = require('./jquerypp.swipe.js')
 ,	sliders = require('./sliders.js')
 ,	api = {
-//		facebook: require('./apis/facebook.js')
-//	,	instagram: require('./apis/instagram.js')
-//	,	tumblr: require('./apis/tumblr')
+		facebook: require('./apis/facebook.js')
+	,	instagram: require('./apis/instagram.js')
+	,	tumblr: require('./apis/tumblr')
 	}
 ,	templates = {
 		card: require('../_templates/card.jade')
@@ -9863,7 +10028,7 @@ $(function(){
 	}
 });
 
-},{"../_templates/card.jade":7,"./jquerypp.swipe.js":4,"./sliders.js":6,"jquery-browserify":3}],6:[function(require,module,exports){
+},{"../_templates/card.jade":10,"./apis/facebook.js":4,"./apis/instagram.js":5,"./apis/tumblr":6,"./jquerypp.swipe.js":7,"./sliders.js":9,"jquery-browserify":3}],9:[function(require,module,exports){
 module.exports = function($Wrapper){
 	var go = function(nextSlide,$card,$slider,$dot,loop,totalImages,currentSlide){
 		var	uid = $slider.data('slug')
@@ -9940,7 +10105,7 @@ module.exports = function($Wrapper){
 	});
 
 }
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 var jade = require("jade/runtime");
 
 module.exports = function template(locals) {
@@ -10122,4 +10287,4 @@ buf.push("<div class=\"slider-controls\"><a href=\"#\" data-dir=\"left\" class=\
 var uid = card.slug ? card.slug : 'card-'+i;
 jade_mixins["card"](card,uid);;return buf.join("");
 };
-},{"jade/runtime":2}]},{},[5])
+},{"jade/runtime":2}]},{},[8])
